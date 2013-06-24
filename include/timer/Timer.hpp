@@ -22,6 +22,8 @@
 
 #pragma once
 #include <chrono>
+#include <ostream>
+#include <functional>
 
 namespace timer
 {
@@ -40,7 +42,10 @@ namespace timer
 
       void reportTo( std::ostream& output )
       {
-        output << "measurement took: " << m_measuredDuration.count() << " microseconds";
+        output << "measurement took: "
+               << m_measuredDuration.count()
+               << " microseconds"
+               << std::endl;
       }
 
 
