@@ -81,5 +81,31 @@ namespace timer
   {
     return Measurement();
   }
+
+  class Repeater
+  {
+    public:
+      typedef unsigned long long int CounterType;
+      Repeater( const CounterType& count )
+        : m_count( count )
+      {
+      }
+
+      void operator()( std::function< void() > code )
+      {
+        for ( CounterType i( 0 ); i < m_count; ++i )
+        {
+          code();
+        }
+      }
+
+    private:
+      const CounterType m_count;
+  };
+
+  Repeater operator "" _times( Repeater::CounterType count )
+  {
+    return Repeater( count );
+  }
 }
 

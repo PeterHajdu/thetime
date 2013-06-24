@@ -49,3 +49,17 @@ Describe( measurement )
 
 };
 
+Describe( repeater )
+{
+  It( executes_a_function_n_times )
+  {
+    size_t counter( 0 );
+    10_times(
+        [ &counter ]()
+        {
+          ++counter;
+        } );
+    AssertThat( counter, Equals( 10 ) );
+  }
+};
+
