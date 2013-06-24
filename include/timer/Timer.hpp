@@ -62,25 +62,14 @@ namespace timer
   };
 
 
-  class Measurement
+  inline Result measure( std::function< void() > code )
   {
-    public:
-      typedef std::chrono::steady_clock Clock;
-
-
-      Result operator()( std::function< void() > code )
-      {
-        Clock::time_point start( Clock::now() );
-        code();
-        return Result( std::chrono::duration_cast< Result::StoredDurationType >( Clock::now() - start ) );
-      }
-  };
-
-
-  Measurement measure()
-  {
-    return Measurement();
+    typedef std::chrono::steady_clock Clock;
+    Clock::time_point start( Clock::now() );
+    code();
+    return Result( std::chrono::duration_cast< Result::StoredDurationType >( Clock::now() - start ) );
   }
+
 
   class Repeater
   {

@@ -11,7 +11,7 @@ Describe( measurement )
   It( should_execute_given_code_block )
   {
     bool executed( false );
-    measure()(
+    measure(
         [ &executed ]()
         {
           executed = true;
@@ -23,7 +23,7 @@ Describe( measurement )
   It( can_check_time_limits )
   {
     auto result(
-        measure()(
+        measure(
         []()
         {
           std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
@@ -39,7 +39,7 @@ Describe( measurement )
   It( writes_report_to_an_ostream )
   {
     std::stringstream reportStream;
-    measure()(
+    measure(
         []()
         {
         }).report( reportStream );
