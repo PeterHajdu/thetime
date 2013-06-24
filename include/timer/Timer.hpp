@@ -38,7 +38,7 @@ namespace timer
       }
 
 
-      void report( std::ostream& output )
+      void reportTo( std::ostream& output )
       {
         output << "measurement took: " << m_measuredDuration.count() << " microseconds";
       }

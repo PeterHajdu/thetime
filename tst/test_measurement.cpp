@@ -42,7 +42,7 @@ Describe( measurement )
     measure(
         []()
         {
-        }).report( reportStream );
+        }).reportTo( reportStream );
     AssertThat( reportStream.str().empty(), Equals( false ) );
     AssertThat( reportStream.str(), Contains( "measurement took: " ) );
   }
