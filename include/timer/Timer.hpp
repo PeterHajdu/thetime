@@ -57,6 +57,12 @@ namespace timer
         return m_measuredDuration > durationLimit;
       }
 
+
+      const StoredDurationType& duration() const
+      {
+        return m_measuredDuration;
+      }
+
     private:
       const StoredDurationType m_measuredDuration;
   };

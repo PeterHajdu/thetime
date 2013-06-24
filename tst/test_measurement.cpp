@@ -47,6 +47,16 @@ Describe( measurement )
     AssertThat( reportStream.str(), Contains( "measurement took: " ) );
   }
 
+
+  It( can_return_the_exact_measured_duration )
+  {
+    Result::StoredDurationType duration(
+      measure(
+          []()
+          {
+          }).duration() );
+  }
+
 };
 
 Describe( repeater )
