@@ -22,3 +22,22 @@
 
 #pragma once
 
+namespace timer
+{
+  class Measurement
+  {
+    public:
+      Measurement() = default;
+
+      void operator()( std::function< void() > code )
+      {
+        code();
+      }
+  };
+
+  Measurement measure()
+  {
+    return Measurement();
+  }
+}
+
