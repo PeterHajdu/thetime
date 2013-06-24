@@ -21,19 +21,61 @@
  **/
 
 #pragma once
+#include <chrono>
 
 namespace timer
 {
+
+  class Result
+  {
+    public:
+      typedef std::chrono::microseconds StoredDurationType;
+
+      template < class DurationType >
+      Result( const DurationType& measuredDuration )
+        : m_measuredDuration( measuredDuration )
+      {
+      }
+
+
+      void report( std::ostream& output )
+      {
+        output << "measurement took: " << m_measuredDuration.count() << " microseconds";
+      }
+
+
+      template < class DurationType >
+      bool tookLessThan( DurationType durationLimit )
+      {
+        return m_measuredDuration < durationLimit;
+      }
+
+
+      template < class DurationType >
+      bool tookMoreThan( DurationType durationLimit )
+      {
+        return m_measuredDuration > durationLimit;
+      }
+
+    private:
+      const StoredDurationType m_measuredDuration;
+  };
+
+
   class Measurement
   {
     public:
-      Measurement() = default;
+      typedef std::chrono::steady_clock Clock;
 
-      void operator()( std::function< void() > code )
+
+      Result operator()( std::function< void() > code )
       {
+        Clock::time_point start( Clock::now() );
         code();
+        return Result( std::chrono::duration_cast< Result::StoredDurationType >( Clock::now() - start ) );
       }
   };
+
 
   Measurement measure()
   {

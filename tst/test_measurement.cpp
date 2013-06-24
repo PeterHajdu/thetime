@@ -1,6 +1,7 @@
 #include <igloo/igloo.h>
 #include <igloo/igloo_alt.h>
 #include <timer/Timer.hpp>
+#include <thread>
 using namespace igloo;
 using namespace timer;
 
@@ -16,6 +17,34 @@ Describe( measurement )
           executed = true;
         });
     AssertThat( executed, Equals( true ) );
+  }
+
+
+  It( can_check_time_limits )
+  {
+    auto result(
+        measure()(
+        []()
+        {
+          std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+        } ) );
+
+    AssertThat( result.tookLessThan( std::chrono::seconds( 1 ) ), Equals( false ) );
+    AssertThat( result.tookLessThan( std::chrono::seconds( 3 ) ), Equals( true ) );
+    AssertThat( result.tookMoreThan( std::chrono::seconds( 1 ) ), Equals( true ) );
+    AssertThat( result.tookMoreThan( std::chrono::seconds( 3 ) ), Equals( false ) );
+  }
+
+
+  It( writes_report_to_an_ostream )
+  {
+    std::stringstream reportStream;
+    measure()(
+        []()
+        {
+        }).report( reportStream );
+    AssertThat( reportStream.str().empty(), Equals( false ) );
+    AssertThat( reportStream.str(), Contains( "measurement took: " ) );
   }
 
 };
