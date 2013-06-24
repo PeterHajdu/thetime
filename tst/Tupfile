@@ -1,0 +1,6 @@
+include_rules
+
+: foreach *.cpp |> !cpp |> {test_objs}
+: {test_objs} |> !link_binary |> test
+: |> !run_test |>
+
