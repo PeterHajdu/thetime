@@ -50,6 +50,7 @@ Describe( measurement )
 
   It( can_return_the_exact_measured_duration )
   {
+    //todo: correct test
     /*
     Result::StoredDurationType duration(
       measure(
@@ -72,7 +73,7 @@ Describe( repeater )
         {
           ++counter;
         } );
-    AssertThat( counter, Equals( 10 ) );
+    AssertThat( counter, Equals( 10u ) );
   }
 };
 
