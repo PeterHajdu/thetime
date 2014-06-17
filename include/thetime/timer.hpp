@@ -20,7 +20,7 @@ namespace time
       }
 
 
-      void reportTo( std::ostream& output )
+      void report_to( std::ostream& output )
       {
         output << "measurement took: "
                << m_measuredDuration.count()
@@ -30,14 +30,14 @@ namespace time
 
 
       template < class DurationType >
-      bool tookLessThan( DurationType durationLimit )
+      bool took_less_than( DurationType durationLimit )
       {
         return m_measuredDuration < durationLimit;
       }
 
 
       template < class DurationType >
-      bool tookMoreThan( DurationType durationLimit )
+      bool took_more_than( DurationType durationLimit )
       {
         return m_measuredDuration > durationLimit;
       }

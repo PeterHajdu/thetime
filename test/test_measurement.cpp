@@ -1,9 +1,9 @@
 #include <igloo/igloo.h>
 #include <igloo/igloo_alt.h>
-#include <timer/Timer.hpp>
+#include <thetime/timer.hpp>
 #include <thread>
 using namespace igloo;
-using namespace timer;
+using namespace the::time;
 
 Describe( measurement )
 {
@@ -29,22 +29,22 @@ Describe( measurement )
           std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
         } ) );
 
-    AssertThat( result.tookLessThan( std::chrono::seconds( 1 ) ), Equals( false ) );
-    AssertThat( result.tookLessThan( std::chrono::seconds( 3 ) ), Equals( true ) );
-    AssertThat( result.tookMoreThan( std::chrono::seconds( 1 ) ), Equals( true ) );
-    AssertThat( result.tookMoreThan( std::chrono::seconds( 3 ) ), Equals( false ) );
+    AssertThat( result.took_less_than( std::chrono::seconds( 1 ) ), Equals( false ) );
+    AssertThat( result.took_less_than( std::chrono::seconds( 3 ) ), Equals( true ) );
+    AssertThat( result.took_more_than( std::chrono::seconds( 1 ) ), Equals( true ) );
+    AssertThat( result.took_more_than( std::chrono::seconds( 3 ) ), Equals( false ) );
   }
 
 
   It( writes_report_to_an_ostream )
   {
-    std::stringstream reportStream;
+    std::stringstream report_stream;
     measure(
         []()
         {
-        }).reportTo( reportStream );
-    AssertThat( reportStream.str().empty(), Equals( false ) );
-    AssertThat( reportStream.str(), Contains( "measurement took: " ) );
+        }).reportTo( report_stream );
+    AssertThat(report_stream .str().empty(), Equals( false ) );
+    AssertThat(report_stream .str(), Contains( "measurement took: " ) );
   }
 
 
