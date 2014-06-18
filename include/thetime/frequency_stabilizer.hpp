@@ -23,9 +23,10 @@ template < int Frequency, typename Clock, typename Sleeper = SimpleSleeper< Cloc
 class FrequencyStabilizer
 {
   public:
+    typedef typename Clock::Time Time;
     static const int frequency = Frequency;
-    static const typename Clock::Time ticks_per_second = Clock::ticks_per_second;
-    static const typename Clock::Time ticks_per_period = Clock::ticks_per_second / frequency;
+    static const Time ticks_per_second = Clock::ticks_per_second;
+    static const Time ticks_per_period = Clock::ticks_per_second / frequency;
 
     FrequencyStabilizer( const Clock& clock )
       : m_frequecy_meter( clock )
