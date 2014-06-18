@@ -6,6 +6,7 @@ set(TEST_SOURCE_FILES
     test_runner.cpp
     test_measurement.cpp
     test_clock.cpp
+    test_frequency_meter.cpp
     )
 
 
