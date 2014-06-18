@@ -50,15 +50,10 @@ Describe( measurement )
 
   It( can_return_the_exact_measured_duration )
   {
-    //todo: correct test
-    /*
-    Result::StoredDurationType duration(
-      measure(
-          []()
-          {
-          }).duration() );
-    AssertThat( is_chrono_duration( duration ), Equals( true ) );
-    */
+    measure(
+        []()
+        {
+        }).duration();
   }
 
 };
