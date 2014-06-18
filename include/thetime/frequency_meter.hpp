@@ -25,7 +25,7 @@ class FrequencyMeter
 
     float per_second() const
     {
-      return Clock::tick_per_second * 1.0 / m_last_interval;
+      return Clock::ticks_per_second * 1.0 / m_last_interval;
     }
 
     typename Clock::Time interval() const

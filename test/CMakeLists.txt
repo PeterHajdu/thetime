@@ -7,6 +7,7 @@ set(TEST_SOURCE_FILES
     test_measurement.cpp
     test_clock.cpp
     test_frequency_meter.cpp
+    test_frequency_stabilizer.cpp
     )
 
 

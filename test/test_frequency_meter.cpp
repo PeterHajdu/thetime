@@ -3,7 +3,6 @@
 
 #include <thetime/frequency_meter.hpp>
 #include <thetime/clock.hpp>
-#include <thread>
 
 #include "test_clock.hpp"
 
@@ -29,7 +28,7 @@ Describe( frequency_meter )
 
   It( should_measure_the_frequency_of_ticks )
   {
-    tick_after( test::Clock::tick_per_second );
+    tick_after( test::Clock::ticks_per_second );
     AssertThat( frequency_meter->per_second(), EqualsWithDelta( 1.0, 0.1 ) );
 
     const test::Clock::Time sixty_per_second_interval{ 16667u };

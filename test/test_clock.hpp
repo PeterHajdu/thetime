@@ -7,7 +7,7 @@ class Clock
 {
   public:
     typedef std::uint64_t Time;
-    static const Time tick_per_second{ 1000000u };
+    static const Time ticks_per_second{ 1000000u };
 
     Clock()
       : m_time( 0 )
