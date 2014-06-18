@@ -28,6 +28,11 @@ class FrequencyMeter
       return Clock::tick_per_second * 1.0 / m_last_interval;
     }
 
+    typename Clock::Time interval() const
+    {
+      return m_last_interval;
+    }
+
   private:
     const Clock& m_clock;
     typename Clock::Time m_last_tick;
