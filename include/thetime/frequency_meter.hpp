@@ -12,7 +12,7 @@ class FrequencyMeter
     FrequencyMeter( const Clock& clock )
       : m_clock( clock )
       , m_last_tick( 0 )
-      , m_last_interval( 0.0 )
+      , m_last_interval( 0 )
     {
     }
 
