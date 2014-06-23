@@ -38,6 +38,7 @@ class FrequencyStabilizer
     {
       m_frequecy_meter.tick();
       m_sleep( ticks_per_period - m_frequecy_meter.interval() );
+      m_frequecy_meter.tick();
     }
 
   private:
