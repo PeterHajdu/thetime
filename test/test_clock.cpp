@@ -39,12 +39,12 @@ Describe( a_clock )
 
   It ( should_be_possible_to_set_the_clock_back )
   {
-    check_clock_setting( 200000 );
+    check_clock_setting( 2000000 );
   }
 
   It ( should_be_possible_to_set_the_clock_forward )
   {
-    check_clock_setting( -200000 );
+    check_clock_setting( -2000000 );
   }
 
   It ( should_have_at_least_microsec_precision )
