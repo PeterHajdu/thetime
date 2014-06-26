@@ -16,10 +16,14 @@ class Clock
 
     Clock();
     Time now() const;
+    void set_clock( const Time& time );
 
   private:
     typedef std::chrono::steady_clock InternalClockType;
     std::chrono::time_point< InternalClockType > m_start;
+
+    typedef std::int64_t Offset;
+    Offset m_offset;
 };
 
 }
