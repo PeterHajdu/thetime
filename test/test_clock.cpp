@@ -47,6 +47,19 @@ Describe( a_clock )
     check_clock_setting( -2000000 );
   }
 
+  void check_clock_offset( int64_t offset )
+  {
+    the::time::Clock::Time start( test_clock.now() );
+    test_clock.set_offset( offset );
+    const the::time::Clock::Time expected_time( start + offset );
+    AssertThat( test_clock.now(), EqualsWithDelta( expected_time, std::abs( offset ) * 0.01 ) );
+  }
+
+  It ( should_be_possible_to_set_clock_offset )
+  {
+    check_clock_offset( -2000000 );
+  }
+
   It ( should_have_at_least_microsec_precision )
   {
     the::time::Clock::Time t0( test_clock.now() );

@@ -23,3 +23,9 @@ the::time::Clock::set_time( const Time& time )
   m_offset = time - now();
 }
 
+void
+the::time::Clock::set_offset( const Offset& offset )
+{
+  m_offset = offset;
+}
+
