@@ -33,7 +33,7 @@ Describe( a_clock )
   {
     the::time::Clock::Time start( test_clock.now() );
     const the::time::Clock::Time expected_time( start + offset );
-    test_clock.set_clock( expected_time );
+    test_clock.set_time( expected_time );
     AssertThat( test_clock.now(), EqualsWithDelta( expected_time, std::abs( offset ) * 0.01 ) );
   }
 

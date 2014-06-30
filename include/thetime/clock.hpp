@@ -16,7 +16,7 @@ class Clock
 
     Clock();
     Time now() const;
-    void set_clock( const Time& time );
+    void set_time( const Time& time );
 
   private:
     typedef std::chrono::steady_clock InternalClockType;

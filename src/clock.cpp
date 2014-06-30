@@ -18,7 +18,7 @@ the::time::Clock::now() const
 
 
 void
-the::time::Clock::set_clock( const Time& time )
+the::time::Clock::set_time( const Time& time )
 {
   m_offset = time - now();
 }
