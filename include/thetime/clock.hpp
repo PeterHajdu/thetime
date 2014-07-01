@@ -8,9 +8,12 @@ namespace the
 namespace time
 {
 
+typedef std::int64_t Difference;
+typedef std::int64_t Offset;
+typedef std::uint64_t Time;
+
 class Clock
 {
-    typedef std::int64_t Offset;
   public:
     typedef std::uint64_t Time;
     static const Time ticks_per_second{ 1000000u };
