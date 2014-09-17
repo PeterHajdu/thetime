@@ -83,11 +83,11 @@ namespace time
       const CounterType m_count;
   };
 
-  Repeater operator "" _times( Repeater::CounterType count )
-  {
-    return Repeater( count );
-  }
-
 }
+}
+
+the::time::Repeater operator "" _times( the::time::Repeater::CounterType count )
+{
+  return the::time::Repeater( count );
 }
 
