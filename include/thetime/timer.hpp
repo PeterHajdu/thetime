@@ -86,7 +86,7 @@ namespace time
 }
 }
 
-the::time::Repeater operator "" _times( the::time::Repeater::CounterType count )
+inline the::time::Repeater operator "" _times( the::time::Repeater::CounterType count )
 {
   return the::time::Repeater( count );
 }
