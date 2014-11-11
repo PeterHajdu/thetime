@@ -1,6 +1,8 @@
 #include <thetime/clock.hpp>
 #include <chrono>
 
+const the::time::Time the::time::Clock::ticks_per_second{ 1000000u };
+
 the::time::Clock::Clock()
   : m_start( InternalClockType::now() )
   , m_offset( 0 )
