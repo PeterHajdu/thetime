@@ -24,9 +24,9 @@ class FrequencyStabilizer
 {
   public:
     typedef typename Clock::Time Time;
-    static const int frequency = Frequency;
-    static const Time ticks_per_second = Clock::ticks_per_second;
-    static const Time ticks_per_period = Clock::ticks_per_second / frequency;
+    const int frequency = Frequency;
+    const Time ticks_per_second = Clock::ticks_per_second;
+    const Time ticks_per_period = Clock::ticks_per_second / frequency;
 
     FrequencyStabilizer( const Clock& clock )
       : m_frequecy_meter( clock )
