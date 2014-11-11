@@ -9,3 +9,5 @@ CMakeFiles
 CMakeCache.txt
 build
 install_manifest.txt
+package_version
+
