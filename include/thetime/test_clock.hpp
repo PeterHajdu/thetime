@@ -1,5 +1,9 @@
 #pragma once
 
+namespace the
+{
+namespace time
+{
 namespace test
 {
 
@@ -28,5 +32,7 @@ class Clock
     Time m_time;
 };
 
+}
+}
 }
 
