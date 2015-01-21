@@ -16,18 +16,20 @@ Describe( once_in )
   void SetUp()
   {
     test_clock.reset( new test::Clock );
-    oncein.reset( new the::time::OnceIn< test::Clock >( *test_clock, interval ) );
+    oncein.reset( new the::time::OnceIn< test::Clock >(
+          *test_clock,
+          interval,
+          [ &was_run = was_run ]()
+          {
+            was_run = true;
+          } ) );
   }
 
   bool did_run_after( const the::time::Time& interval )
   {
-    bool was_run{ false };
+    was_run = false;
     test_clock->sleep_for( interval );
-    oncein->run(
-        [ &was_run ]()
-        {
-          was_run = true;
-        } );
+    oncein->tick();
     return was_run;
   }
 
@@ -47,6 +49,7 @@ Describe( once_in )
     AssertThat( did_run_after( interval - 1 ), Equals( false ) );
   }
 
+  bool was_run;
   std::unique_ptr< test::Clock > test_clock;
   std::unique_ptr< OnceIn< test::Clock > > oncein;
   const the::time::Time interval{ 10000 };

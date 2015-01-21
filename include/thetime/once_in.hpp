@@ -12,14 +12,16 @@ template < typename Clock >
 class OnceIn
 {
   public:
-    OnceIn( const Clock& clock, const Time& interval )
+    using Callback = std::function< void() >;
+    OnceIn( const Clock& clock, const Time& interval, Callback&& callback )
       : m_clock( clock )
       , m_interval( interval )
       , m_last_run( 0 )
+      , m_callback( callback )
     {
     }
 
-    void run( std::function< void() > code )
+    void tick()
     {
       const Time now( m_clock.now() );
       if ( now - m_last_run < m_interval )
@@ -28,13 +30,14 @@ class OnceIn
       }
 
       m_last_run = now;
-      code();
+      m_callback();
     }
 
   private:
     const Clock& m_clock;
     const Time m_interval;
     Time m_last_run;
+    Callback m_callback;
 };
 
 }
