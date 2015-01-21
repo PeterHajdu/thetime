@@ -3,8 +3,7 @@
 
 #include <thetime/frequency_meter.hpp>
 #include <thetime/clock.hpp>
-
-#include "test_clock.hpp"
+#include <thetime/test_clock.hpp>
 
 using namespace igloo;
 using namespace the::time;

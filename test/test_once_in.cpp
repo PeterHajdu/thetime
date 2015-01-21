@@ -1,7 +1,5 @@
 #include <thetime/once_in.hpp>
-#include <thetime/clock.hpp>
-
-#include "test_clock.hpp"
+#include <thetime/test_clock.hpp>
 
 #include <igloo/igloo.h>
 #include <igloo/igloo_alt.h>

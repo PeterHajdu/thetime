@@ -2,7 +2,7 @@
 #include <igloo/igloo_alt.h>
 
 #include <thetime/frequency_stabilizer.hpp>
-#include "test_clock.hpp"
+#include <thetime/test_clock.hpp>
 
 using namespace igloo;
 using namespace the::time;
