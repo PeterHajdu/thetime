@@ -19,8 +19,9 @@ Describe( once_in )
     oncein.reset( new the::time::OnceIn< test::Clock >(
           *test_clock,
           interval,
-          [ &was_run = was_run ]()
+          [ &was_run = was_run, &last_called_at = last_called_at ]( const the::time::Time& timestamp )
           {
+            last_called_at = timestamp;
             was_run = true;
           } ) );
   }
@@ -43,6 +44,12 @@ Describe( once_in )
     AssertThat( did_run_after( interval ), Equals( true ) );
   }
 
+  It( passes_the_current_time_to_the_callback_function )
+  {
+    AssertThat( did_run_after( interval ), Equals( true ) );
+    AssertThat( last_called_at, Equals( test_clock->now() ) );
+  }
+
   It( resets_the_timer_after_each_execution )
   {
     AssertThat( did_run_after( interval ), Equals( true ) );
@@ -53,5 +60,6 @@ Describe( once_in )
   std::unique_ptr< test::Clock > test_clock;
   std::unique_ptr< OnceIn< test::Clock > > oncein;
   const the::time::Time interval{ 10000 };
+  the::time::Time last_called_at;
 };
 

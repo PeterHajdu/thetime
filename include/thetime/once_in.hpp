@@ -12,7 +12,7 @@ template < typename Clock >
 class OnceIn
 {
   public:
-    using Callback = std::function< void() >;
+    using Callback = std::function< void( const Time& ) >;
     OnceIn( const Clock& clock, const Time& interval, Callback&& callback )
       : m_clock( clock )
       , m_interval( interval )
@@ -30,7 +30,7 @@ class OnceIn
       }
 
       m_last_run = now;
-      m_callback();
+      m_callback( now );
     }
 
   private:
